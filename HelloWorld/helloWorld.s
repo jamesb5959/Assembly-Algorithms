@@ -1,7 +1,7 @@
 .globl main	
 
 main:
-pushq	%rbp
+	pushq	%rbp
 	movq	%rsp, %rbp
 	subq	$32, %rsp
 	movq	%fs:40, %rax
