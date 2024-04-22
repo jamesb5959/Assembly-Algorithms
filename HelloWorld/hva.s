@@ -1,7 +1,7 @@
-.globl main	
-
+	.globl	main
+	.type	main, @function
 main:
-pushq	%rbp
+	pushq	%rbp
 	movq	%rsp, %rbp
 	subq	$32, %rsp
 	movq	%fs:40, %rax
@@ -17,6 +17,10 @@ pushq	%rbp
 	movl	$0, %eax
 	movq	-8(%rbp), %rdx
 	subq	%fs:40, %rdx
+	je	.L3
+	call	__stack_chk_fail@PLT
+.L3:
 	leave
 	ret
-
+.LFE0:
+	.size	main, .-main
